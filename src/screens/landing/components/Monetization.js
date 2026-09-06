@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Button } from '../../../components';
-import { commonText, colors } from '../../../utils';
+import React, { useState } from "react";
+import { commonText, colors } from "../../../utils";
 
 export const Monetization = () => {
-  const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [applied, setApplied] = useState(false);
 
   return (
     <section
@@ -11,85 +10,84 @@ export const Monetization = () => {
       className="py-24 px-6 max-w-7xl mx-auto border-t"
       style={{ borderColor: colors.transparentWhite10 }}
     >
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <span
-          className="text-xs font-bold uppercase tracking-widest block mb-3"
-          style={{ color: colors.pink }}
-        >
-          {commonText.eligibilityChecklist}
-        </span>
+      <div className="max-w-4xl mx-auto text-center mb-16">
         <h2
-          className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6"
           style={{ color: colors.white }}
         >
-          {commonText.monetizeMasterpieces}
+          {commonText.monetizationHeader}
         </h2>
-        <p className="text-sm sm:text-base leading-relaxed" style={{ color: colors.subtitleGray }}>
-          {commonText.monetizationSubtitle}
+        <p
+          className="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto"
+          style={{ color: colors.subtitleGray }}
+        >
+          {commonText.monetizationCopy}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          className="border rounded-2xl p-8"
-          style={{
-            backgroundColor: colors.darkblue,
-            borderColor: colors.transparentWhite10,
-          }}
-        >
-          <h3 className="text-lg font-bold mb-4" style={{ color: colors.white }}>
-            ✓ {commonText.eligibilityChecklist}
-          </h3>
-          <ul className="space-y-4 text-xs sm:text-sm" style={{ color: colors.offwhite }}>
-            <li className="flex items-center gap-2.5">
-              <span style={{ color: colors.onlineGreen, fontWeight: 'bold' }}>✓</span> {commonText.reqViews}
-            </li>
-            <li className="flex items-center gap-2.5">
-              <span style={{ color: colors.onlineGreen, fontWeight: 'bold' }}>✓</span> {commonText.reqOriginal}
-            </li>
-            <li className="flex items-start gap-2.5 leading-relaxed">
-              <span style={{ color: colors.onlineGreen, fontWeight: 'bold' }}>✓</span> {commonText.copyrightAgreement}
-            </li>
-          </ul>
-        </div>
-
-        <div
-          className="border rounded-2xl p-8 flex flex-col justify-between"
-          style={{
-            backgroundColor: colors.skeletonBone,
-            borderColor: colors.transparentWhite15,
-          }}
-        >
+      <div
+        className="max-w-3xl mx-auto rounded-3xl p-8 sm:p-12 border"
+        style={{
+          backgroundColor: "rgba(21, 28, 42, 0.75)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          borderColor: colors.transparentWhite10,
+          boxShadow: "0 24px 60px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-2" style={{ color: colors.white }}>
-              {commonText.applicationForm}
-            </h3>
-            <p className="text-xs leading-relaxed mb-6" style={{ color: colors.subtitleGray }}>
-              {commonText.termsAgreement}
-            </p>
-          </div>
-
-          {applicationSubmitted ? (
             <div
-              className="p-4 rounded-xl border text-xs font-bold text-center"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3"
               style={{
-                backgroundColor: colors.transparentWhite5,
-                borderColor: colors.onlineGreen,
-                color: colors.onlineGreen,
+                backgroundColor: `${colors.storyRing}15`,
+                color: colors.storyRing,
               }}
             >
-              🎉 {commonText.applicationSubmittedTitle} — {commonText.applicationSubmittedDesc}
+              <span>{commonText.monetization}</span>
+              <span style={{ color: colors.onlineGreen }}>✓</span>
             </div>
-          ) : (
-            <Button
-              variant="primary"
-              size="md"
-              className="w-full"
-              onClick={() => setApplicationSubmitted(true)}
+            <div
+              className="text-xl font-bold tracking-tight mb-2"
+              style={{ color: colors.white }}
             >
-              {commonText.submitApplication} →
-            </Button>
-          )}
+              {commonText.appName} Creator Fund
+            </div>
+            <div
+              className="text-xs"
+              style={{ color: colors.dimLabelGray }}
+            >
+              Stripe Connect • Performance Payouts
+            </div>
+          </div>
+
+          <div className="w-full sm:w-auto shrink-0">
+            {applied ? (
+              <div
+                className="px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-center border"
+                style={{
+                  backgroundColor: `${colors.onlineGreen}15`,
+                  borderColor: colors.onlineGreen,
+                  color: colors.onlineGreen,
+                }}
+              >
+                ✓ {commonText.applicationSubmittedTitle}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setApplied(true)}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all cursor-pointer shadow-lg hover:opacity-95"
+                style={{
+                  background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
+                  color: colors.white,
+                  boxShadow: `0 8px 24px ${colors.storyRing}45`,
+                }}
+              >
+                {commonText.ctaApplyMonetization}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </section>

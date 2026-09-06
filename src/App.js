@@ -1,15 +1,19 @@
 import React from 'react';
-import { Landing } from './screens';
+import { BrowserRouter } from 'react-router-dom';
+import { MainStack } from './navigation';
 import './tailwind-output.css';
 import './index.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Landing />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <MainStack />
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
