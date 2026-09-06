@@ -25,6 +25,7 @@ export const commonText = {
   letsFixThis: "Let’s fix this, buddy",
   dontStress: "Don’t stress. We’ll get you back in within seconds",
   continue: "Continue",
+  continueYourJourney: "Continue Your Journey",
   youAreAlmostBack: "You’re almost back, buddy",
   justSetYOurPassword: "Just set your new password below.",
   resetPassword: "Reset Password",
@@ -184,17 +185,22 @@ export const commonText = {
   home: "Home",
   register: "Register",
   heroHeadline: "The Digital Screening Room for Independent Cinema.",
-  heroSubheadline: "Showcase your portfolio in pristine 4K, connect with verified production crews, and apply for the Creator Monetization Fund.",
+  heroSubheadline:
+    "Showcase your portfolio in pristine 4K, connect with verified production crews, and apply for the Creator Monetization Fund.",
   ctaApplyMonetization: "Apply for Monetization",
   ctaExplorePortfolios: "Explore Portfolios",
   featurePlayerTitle: "The Native Player",
-  featurePlayerDesc: "Edge-to-edge playback, lossless audio support, and dynamic aspect ratio locking (16:9 to 2.35:1) to preserve your exact framing.",
+  featurePlayerDesc:
+    "Edge-to-edge playback, lossless audio support, and dynamic aspect ratio locking (16:9 to 2.35:1) to preserve your exact framing.",
   featureCrewTitle: "Verified Crew Sync",
-  featureCrewDesc: "Tag your entire crew. From the Director of Photography to the Colorist, build an interconnected, verified filmography.",
+  featureCrewDesc:
+    "Tag your entire crew. From the Director of Photography to the Colorist, build an interconnected, verified filmography.",
   featureGearTitle: "Gear & Specs Meta-Data",
-  featureGearDesc: "Log your exact technical setups directly on your projects, from ARRI Alexa Minis to Cooke Anamorphic lenses.",
+  featureGearDesc:
+    "Log your exact technical setups directly on your projects, from ARRI Alexa Minis to Cooke Anamorphic lenses.",
   monetizationHeader: "Fund Your Next Masterpiece.",
-  monetizationCopy: "Indiemate partners with creators. If you own 100% of the copyrights to your original films, apply to the Creator Fund for performance-based payouts directly to your Stripe account.",
+  monetizationCopy:
+    "Indiemate partners with creators. If you own 100% of the copyrights to your original films, apply to the Creator Fund for performance-based payouts directly to your Stripe account.",
   features: "Features",
   screeningRoom: "Screening Room",
   editorialPhotographyNotice: "Cinematic Filmography",

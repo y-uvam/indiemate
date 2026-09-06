@@ -1,50 +1,70 @@
 import React from "react";
 import { commonText, colors } from "../../../utils";
-import { cinemaHero } from "../../../assets";
+import { appImages } from "../../../assets";
+import { GridDistortion } from "../../../components";
 
 export const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative pt-36 pb-20 md:pt-44 md:pb-28 text-center px-6 max-w-7xl mx-auto"
+      className="relative min-h-[90vh] flex flex-col justify-center items-center pt-36 pb-24 md:pt-48 md:pb-36 text-center px-6 overflow-hidden w-full"
     >
-      <div className="max-w-4xl mx-auto">
-        <div
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border mb-8 text-xs font-medium"
-          style={{
-            backgroundColor: "rgba(30, 123, 255, 0.12)",
-            borderColor: "rgba(30, 123, 255, 0.3)",
-            color: colors.primaryBlue,
-          }}
-        >
-          <span
-            className="w-2 h-2 rounded-full"
-            style={{
-              backgroundColor: colors.onlineGreen,
-              boxShadow: `0 0 8px ${colors.onlineGreen}`,
-            }}
-          />
-          <span>{commonText.screeningRoom}</span>
-        </div>
+      {/* Background Interactive Grid Distortion Layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-auto">
+        <GridDistortion
+          imageSrc={appImages.intro4}
+          grid={16}
+          mouse={0.12}
+          strength={0.2}
+          relaxation={0.9}
+          className="w-full h-full opacity-70"
+        />
 
+        {/* Ambient Dark Cinema Gradients for Readability and Seamless Blending */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 45%, rgba(6, 15, 33, 0.45) 0%, rgba(11, 15, 23, 0.8) 60%, #0B0F17 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 top-0 h-36 pointer-events-none"
+          style={{
+            background: `linear-gradient(to bottom, ${colors.background} 0%, transparent 100%)`,
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-44 pointer-events-none"
+          style={{
+            background: `linear-gradient(to top, ${colors.background} 0%, transparent 100%)`,
+          }}
+        />
+      </div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center">
+        {/* Hero Headline */}
         <h1
-          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6"
+          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6 drop-shadow-xl"
           style={{ color: colors.white }}
         >
           {commonText.heroHeadline}
         </h1>
 
+        {/* Subheadline */}
         <p
-          className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
+          className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 drop-shadow-md"
           style={{ color: colors.subtitleGray }}
         >
           {commonText.heroSubheadline}
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
           <a
             href="#monetization"
-            className="px-8 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase transition-all shadow-lg hover:opacity-95"
+            className="px-8 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase transition-all shadow-lg hover:opacity-95 hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
               color: colors.white,
@@ -55,7 +75,7 @@ export const Hero = () => {
           </a>
           <a
             href="#features"
-            className="px-8 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase transition-all border hover:bg-white/5"
+            className="px-8 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase transition-all border hover:bg-white/10 hover:scale-[1.03] active:scale-[0.98]"
             style={{
               backgroundColor: "rgba(21, 28, 42, 0.75)",
               backdropFilter: "blur(20px)",
@@ -66,26 +86,45 @@ export const Hero = () => {
             {commonText.ctaExplorePortfolios}
           </a>
         </div>
-      </div>
 
-      <div
-        className="max-w-5xl mx-auto rounded-3xl overflow-hidden border p-2"
-        style={{
-          backgroundColor: "rgba(21, 28, 42, 0.75)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          borderColor: colors.transparentWhite10,
-          boxShadow: "0 24px 60px rgba(0, 0, 0, 0.6)",
-        }}
-      >
-        <div className="aspect-[21/9] sm:aspect-[2.35/1] w-full rounded-2xl overflow-hidden relative">
-          <img
-            src={cinemaHero}
-            alt={commonText.appName}
-            className="w-full h-full object-cover"
-          />
+        {/* Floating Feature Spec Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium">
+          <div
+            className="px-4 py-2 rounded-full border flex items-center gap-2 backdrop-blur-md"
+            style={{
+              backgroundColor: "rgba(21, 28, 42, 0.65)",
+              borderColor: colors.transparentWhite10,
+              color: colors.white,
+            }}
+          >
+            <span style={{ color: colors.storyRing }}>✦</span>
+            <span>4K Lossless Playback</span>
+          </div>
+          <div
+            className="px-4 py-2 rounded-full border flex items-center gap-2 backdrop-blur-md"
+            style={{
+              backgroundColor: "rgba(21, 28, 42, 0.65)",
+              borderColor: colors.transparentWhite10,
+              color: colors.white,
+            }}
+          >
+            <span style={{ color: colors.orange }}>✦</span>
+            <span>Verified Crew Network</span>
+          </div>
+          <div
+            className="px-4 py-2 rounded-full border flex items-center gap-2 backdrop-blur-md"
+            style={{
+              backgroundColor: "rgba(21, 28, 42, 0.65)",
+              borderColor: colors.transparentWhite10,
+              color: colors.white,
+            }}
+          >
+            <span style={{ color: colors.onlineGreen }}>✦</span>
+            <span>100% Creator Fund</span>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

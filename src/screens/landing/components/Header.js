@@ -10,140 +10,102 @@ export const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 h-20 z-40 transition-all duration-300"
-      style={{
-        backgroundColor: scrolled ? "rgba(5, 20, 36, 0.75)" : "transparent",
-        backdropFilter: scrolled ? "blur(24px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
-        borderBottom: `1px solid ${scrolled ? colors.transparentWhite10 : "transparent"}`,
-      }}
-    >
-      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl p-1.5 flex items-center justify-center ">
+    <nav className="fixed top-0 left-0 right-0 h-20 z-40 bg-transparent pointer-events-none transition-all duration-500">
+      <div
+        className={`header-nav-container h-full flex items-center justify-between pointer-events-auto ${
+          scrolled ? "scrolled" : ""
+        }`}
+      >
+        {/* Left Side: Logo moves to left & App name smoothly hides */}
+        <a
+          href="#hero"
+          className={`header-logo-brand flex items-center group ${
+            scrolled ? "scrolled" : ""
+          }`}
+        >
+          <div
+            className={`w-10 h-10 rounded-2xl p-1.5 flex items-center justify-center transition-transform duration-500 ${
+              scrolled ? "scale-105" : "scale-100"
+            }`}
+          >
             <img
               src={appIcons.logo}
               alt={commonText.appName}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
             />
           </div>
-          <span
-            className="text-lg font-bold tracking-tight"
-            style={{ color: colors.white }}
-          >
-            {commonText.appName}
-          </span>
+
+          <div className={`header-app-name ${scrolled ? "hidden-name" : ""}`}>
+            <span
+              className="text-lg font-bold tracking-tight"
+              style={{ color: colors.white }}
+            >
+              {commonText.appName}
+            </span>
+          </div>
         </a>
 
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <li>
-            <a
-              href="#hero"
-              className="transition-colors hover:text-white"
-              style={{ color: colors.subtitleGray }}
-            >
-              {commonText.screeningRoom}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#features"
-              className="transition-colors hover:text-white"
-              style={{ color: colors.subtitleGray }}
-            >
-              {commonText.features}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#monetization"
-              className="transition-colors hover:text-white"
-              style={{ color: colors.subtitleGray }}
-            >
-              {commonText.monetization}
-            </a>
-          </li>
-        </ul>
-
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#monetization"
-            className="px-6 py-2.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all shadow-md hover:opacity-95"
-            style={{
-              background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
-              color: colors.white,
-              boxShadow: `0 4px 16px ${colors.storyRing}40`,
-            }}
-          >
-            {commonText.ctaApplyMonetization}
-          </a>
-        </div>
-
-        <button
-          className="md:hidden p-2 text-xl"
-          style={{ color: colors.white }}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Navigation"
-        >
-          {mobileMenuOpen ? "✕" : "☰"}
-        </button>
-      </div>
-
-      {mobileMenuOpen && (
         <div
-          className="md:hidden px-6 py-6 flex flex-col gap-5 border-b"
-          style={{
-            backgroundColor: "rgba(5, 20, 36, 0.95)",
-            backdropFilter: "blur(24px)",
-            borderColor: colors.transparentWhite10,
-          }}
+          className={`header-cta-group flex items-center gap-4 ${
+            scrolled ? "scrolled" : ""
+          }`}
         >
-          <a
-            href="#hero"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium"
-            style={{ color: colors.subtitleGray }}
-          >
-            {commonText.screeningRoom}
-          </a>
-          <a
-            href="#features"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium"
-            style={{ color: colors.subtitleGray }}
-          >
-            {commonText.features}
-          </a>
-          <a
-            href="#monetization"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium"
-            style={{ color: colors.subtitleGray }}
-          >
-            {commonText.monetization}
-          </a>
-          <div
-            className="pt-4 border-t"
-            style={{ borderColor: colors.transparentWhite10 }}
-          >
+          <div className="hidden md:flex items-center">
             <a
               href="#monetization"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-center py-3 rounded-full text-xs font-bold uppercase tracking-wide"
+              className="px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:opacity-95 hover:scale-[1.03] active:scale-[0.98]"
               style={{
                 background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
                 color: colors.white,
+                boxShadow: scrolled
+                  ? `0 6px 20px ${colors.storyRing}60`
+                  : `0 4px 16px ${colors.storyRing}40`,
               }}
             >
-              {commonText.ctaApplyMonetization}
+              {commonText.continue}
             </a>
           </div>
+
+          <button
+            className="md:hidden p-2 text-xl transition-transform duration-300 active:scale-90"
+            style={{ color: colors.white }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation"
+          >
+            {mobileMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden px-6 pt-3 pb-6 flex flex-col gap-4 border-b pointer-events-auto"
+          style={{
+            backgroundColor: "rgba(7, 9, 14, 0.96)",
+            backdropFilter: "blur(20px)",
+            borderColor: "rgba(255, 255, 255, 0.1)",
+          }}
+        >
+          <a
+            href="#monetization"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center py-3 rounded-full text-sm font-bold tracking-wide shadow-md"
+            style={{
+              background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
+              color: colors.white,
+            }}
+          >
+            {commonText.continueYourJourney}
+          </a>
         </div>
       )}
     </nav>
