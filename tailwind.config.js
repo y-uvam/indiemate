@@ -22,7 +22,8 @@ module.exports = {
         dimLabelGray: '#8E93A0',
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        sans: ['Urbanist', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        urbanist: ['Urbanist', 'sans-serif'],
       },
       backgroundImage: {
         'primary-gradient': 'linear-gradient(135deg, #F53C6D 0%, #E040FB 50%, #1E7BFF 100%)',

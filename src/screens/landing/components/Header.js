@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { appIcons } from "../../../assets";
 import { colors, commonText } from "../../../utils";
+import { reset, ROUTES } from "../../../navigation";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -59,9 +60,9 @@ export const Header = () => {
           }`}
         >
           <div className="hidden md:flex items-center">
-            <a
-              href="#monetization"
-              className="px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:opacity-95 hover:scale-[1.03] active:scale-[0.98]"
+            <button
+              onClick={() => reset(ROUTES.HOME)}
+              className="px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:opacity-95 hover:scale-[1.03] active:scale-[0.98] cursor-pointer"
               style={{
                 background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
                 color: colors.white,
@@ -71,7 +72,7 @@ export const Header = () => {
               }}
             >
               {commonText.continue}
-            </a>
+            </button>
           </div>
 
           <button
@@ -95,17 +96,19 @@ export const Header = () => {
             borderColor: "rgba(255, 255, 255, 0.1)",
           }}
         >
-          <a
-            href="#monetization"
-            onClick={() => setMobileMenuOpen(false)}
-            className="w-full text-center py-3 rounded-full text-sm font-bold tracking-wide shadow-md"
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              reset(ROUTES.HOME);
+            }}
+            className="w-full text-center py-3 rounded-full text-sm font-bold tracking-wide shadow-md cursor-pointer"
             style={{
               background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
               color: colors.white,
             }}
           >
             {commonText.continueYourJourney}
-          </a>
+          </button>
         </div>
       )}
     </nav>

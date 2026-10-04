@@ -12,7 +12,7 @@ export const Hero = () => {
       {/* Background Interactive Grid Distortion Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-auto">
         <GridDistortion
-          imageSrc={appImages.intro4}
+          imageSrc={appImages.bg}
           grid={16}
           mouse={0.12}
           strength={0.2}
@@ -25,7 +25,7 @@ export const Hero = () => {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 45%, rgba(6, 15, 33, 0.45) 0%, rgba(11, 15, 23, 0.8) 60%, #0B0F17 100%)",
+              "radial-gradient(ellipse at 30% 25%, rgba(6, 15, 33, 0.45) 0%, rgba(11, 15, 23, 0.8) 60%, #0B0F17 100%)",
           }}
         />
         <div
@@ -45,12 +45,12 @@ export const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center">
         {/* Hero Headline */}
-        <h1
-          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6 drop-shadow-xl"
+        <h3
+          className="text-2xl sm:text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6 drop-shadow-xl"
           style={{ color: colors.white }}
         >
           {commonText.heroHeadline}
-        </h1>
+        </h3>
 
         {/* Subheadline */}
         <p
@@ -127,4 +127,3 @@ export const Hero = () => {
     </section>
   );
 };
-

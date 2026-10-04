@@ -1,190 +1,101 @@
 import React from "react";
-import { commonText, colors } from "../../../utils";
-import { cinematographer } from "../../../assets";
+import { intro1, intro2, intro3, intro4 } from "../../../assets";
 
 export const Features = () => {
-  const features = [
+  const featureCards = [
     {
-      title: commonText.featurePlayerTitle,
-      description: commonText.featurePlayerDesc,
-      iconColor: colors.orange,
-      isHighlighted: false,
+      id: 1,
+      image: intro1,
+      title: "Build Your Legacy",
+      subtitle:
+        "Tag your crew, share the revenue. Every upload builds a verified visual resume, and every view funds the entire production team.",
     },
     {
-      title: commonText.featureCrewTitle,
-      description: commonText.featureCrewDesc,
-      iconColor: colors.storyRing,
-      isHighlighted: true,
+      id: 2,
+      image: intro2,
+      title: "The New Era of Storytelling",
+      subtitle:
+        "Escape the algorithm. A dedicated ecosystem to host, discover, and fund independent films.",
     },
     {
-      title: commonText.featureGearTitle,
-      description: commonText.featureGearDesc,
-      iconColor: colors.primaryBlue,
-      isHighlighted: false,
+      id: 3,
+      image: intro3,
+      title: "The Global Stage",
+      subtitle:
+        "Host digital premieres, submit your work to exclusive in-app film festivals, and cast your Projects directly to the big screen.",
+    },
+    {
+      id: 4,
+      image: intro4,
+      title: "Network Without the Noise",
+      subtitle:
+        "Connect with filmmakers globally through real-time chat, collaborative project sharing, and daily cinematic challenges.",
     },
   ];
 
-  return (
-    <section id="features" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="mb-16">
-        <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
-          style={{ color: colors.white }}
-        >
-          {commonText.features}
-        </h2>
-        <div
-          className="w-12 h-1 rounded-full"
-          style={{
-            background: `linear-gradient(90deg, ${colors.orange} 0%, ${colors.storyRing} 100%)`,
-          }}
-        />
-      </div>
+  // Duplicate cards for seamless, unbroken infinite continuous scroll
+  const displayCards = [...featureCards, ...featureCards];
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-        {features.map((item, idx) => (
-          <div
-            key={idx}
-            className="rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 border"
-            style={{
-              backgroundColor: "rgba(21, 28, 42, 0.75)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              borderColor: item.isHighlighted
-                ? colors.storyRing
-                : colors.transparentWhite10,
-              boxShadow: item.isHighlighted
-                ? `0 12px 36px ${colors.storyRing}25`
-                : "0 12px 32px rgba(0, 0, 0, 0.4)",
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center border"
-                  style={{
-                    backgroundColor: `${item.iconColor}18`,
-                    borderColor: `${item.iconColor}35`,
-                    color: item.iconColor,
-                  }}
-                >
-                  <span className="text-lg font-bold">0{idx + 1}</span>
-                </div>
-                <div
-                  className="w-5 h-5 rounded-full border flex items-center justify-center"
-                  style={{
-                    borderColor: item.isHighlighted
-                      ? colors.storyRing
-                      : colors.dimLabelGray,
-                  }}
-                >
-                  {item.isHighlighted && (
-                    <div
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: colors.storyRing }}
-                    />
-                  )}
+  return (
+    <section
+      id="features"
+      className="py-8 sm:py-12 w-full relative select-none overflow-hidden"
+    >
+      {/* Infinite Looping Track - Smooth continuous 60fps movement, pauses on hover */}
+      <div className="w-full overflow-hidden py-4">
+        <div className="animate-infinite-carousel flex items-center gap-8 sm:gap-12 px-6">
+          {displayCards.map((card, idx) => (
+            <div
+              key={`${card.id}-${idx}`}
+              className="feature-card-item flex-shrink-0 select-none cursor-pointer"
+            >
+              {/* Outer Bezel Frame - Clean Glass, No Shadows */}
+              <div className="w-[290px] sm:w-[330px] md:w-[355px] p-2 sm:p-2.5 rounded-[36px] sm:rounded-[42px] border bg-white/[0.06] border-white/20 hover:border-white/40 hover:bg-white/[0.09] backdrop-blur-xl transition-all duration-300">
+                {/* Inner Card Framing with High Curved Corners */}
+                <div className="relative w-full h-[470px] sm:h-[530px] md:h-[570px] rounded-[28px] sm:rounded-[34px] overflow-hidden bg-[#090e1a]">
+                  {/* Full-bleed Feature Poster Image */}
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+                    loading="lazy"
+                  />
+
+                  {/* Top Ambient Vignette */}
+                  <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+
+                  {/* Progressive Feathered Blur Layer */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-44 pointer-events-none"
+                    style={{
+                      backdropFilter: "blur(14px)",
+                      WebkitBackdropFilter: "blur(14px)",
+                      maskImage:
+                        "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0) 100%)",
+                      WebkitMaskImage:
+                        "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0) 100%)",
+                    }}
+                  />
+
+                  {/* Bottom Scrim: Image, Heading, Subheading */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 pt-16 pb-6 px-6 sm:px-7 flex flex-col justify-end"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(7, 17, 29, 0.95) 0%, rgba(7, 17, 29, 0.65) 55%, transparent 100%)",
+                    }}
+                  >
+                    <h3 className="text-xl sm:text-2xl md:text-[26px] font-extrabold text-white tracking-tight leading-tight mb-2 drop-shadow-md">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-300/90 leading-relaxed font-normal">
+                      {card.subtitle}
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              <h3
-                className="text-xl font-bold tracking-tight mb-3"
-                style={{
-                  color: item.isHighlighted ? colors.storyRing : colors.white,
-                }}
-              >
-                {item.title}
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: colors.subtitleGray }}
-              >
-                {item.description}
-              </p>
             </div>
-
-            <div
-              className="pt-6 mt-6 border-t flex items-center justify-between text-xs font-medium"
-              style={{
-                borderColor: colors.transparentWhite8,
-                color: colors.dimLabelGray,
-              }}
-            >
-              <span>{commonText.appName}</span>
-              <span style={{ color: colors.onlineGreen }}>✓</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className="rounded-3xl border overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center"
-        style={{
-          backgroundColor: "rgba(21, 28, 42, 0.75)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          borderColor: colors.transparentWhite10,
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.4)",
-        }}
-      >
-        <div className="p-8 sm:p-12">
-          <span
-            className="text-xs font-bold uppercase tracking-widest block mb-3"
-            style={{ color: colors.storyRing }}
-          >
-            {commonText.monetization}
-          </span>
-          <h3
-            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
-            style={{ color: colors.white }}
-          >
-            {commonText.featureGearTitle}
-          </h3>
-          <p
-            className="text-sm sm:text-base leading-relaxed mb-6"
-            style={{ color: colors.subtitleGray }}
-          >
-            {commonText.featureGearDesc}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span
-              className="px-3.5 py-1.5 rounded-full text-xs font-medium border"
-              style={{
-                backgroundColor: "rgba(30, 123, 255, 0.12)",
-                borderColor: "rgba(30, 123, 255, 0.25)",
-                color: colors.primaryBlue,
-              }}
-            >
-              ARRI
-            </span>
-            <span
-              className="px-3.5 py-1.5 rounded-full text-xs font-medium border"
-              style={{
-                backgroundColor: `${colors.storyRing}15`,
-                borderColor: `${colors.storyRing}30`,
-                color: colors.storyRing,
-              }}
-            >
-              COOKE
-            </span>
-            <span
-              className="px-3.5 py-1.5 rounded-full text-xs font-medium border"
-              style={{
-                backgroundColor: `${colors.orange}15`,
-                borderColor: `${colors.orange}30`,
-                color: colors.orange,
-              }}
-            >
-              ZEISS
-            </span>
-          </div>
-        </div>
-        <div className="aspect-[16/10] w-full overflow-hidden">
-          <img
-            src={cinematographer}
-            alt={commonText.appName}
-            className="w-full h-full object-cover"
-          />
+          ))}
         </div>
       </div>
     </section>

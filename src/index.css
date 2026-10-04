@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300..900;1,300..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-primary: 'Urbanist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-urbanist: 'Urbanist', sans-serif;
+    --font-sans: 'Urbanist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     
     /* Brand colors */
     --bg-dark: #07090e;
@@ -56,4 +58,48 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #2d3752;
+}
+
+/* Utility to hide scrollbars while allowing scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@keyframes waveLineFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-wave-line {
+  stroke-dasharray: 8 10;
+  animation: waveLineFlow 3s linear infinite;
+}
+
+/* Continuous Infinite Carousel */
+@keyframes infiniteCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-carousel {
+  display: flex;
+  width: max-content;
+  animation: infiniteCarousel 28s linear infinite;
+}
+
+.animate-infinite-carousel:hover {
+  animation-play-state: paused;
 }
