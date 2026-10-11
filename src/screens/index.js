@@ -5,3 +5,7 @@ export * from "./browse/browse";
 export * from "./reels/reels";
 export * from "./chat/chat";
 export * from "./profile/profile";
+export * from "./movie/movie";
+export * from "./notification/notification";
+export * from "./settings/settings";
+export * from "./monetization/monetization";

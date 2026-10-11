@@ -6,7 +6,7 @@ import intro3 from "./intro3.png";
 import intro4 from "./intro4.png";
 import bg from "./bg.png";
 
-export const appImages = {
+export const heroImages = {
   cinemaHero,
   cinematographer,
   intro1,
