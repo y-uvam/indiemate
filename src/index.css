@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300..900;1,300..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-primary: 'Urbanist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-urbanist: 'Urbanist', sans-serif;
+    --font-sans: 'Urbanist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Brand colors */
+    --bg-dark: #07090e;
+    --bg-card: rgba(18, 22, 36, 0.75);
+    --bg-card-hover: rgba(28, 34, 56, 0.85);
+    --bg-card-border: rgba(255, 255, 255, 0.08);
+    --bg-card-border-hover: rgba(255, 255, 255, 0.2);
+    
+    --primary-gradient: linear-gradient(135deg, #ff4370 0%, #a855f7 50%, #6366f1 100%);
+    --primary-gradient-glow: rgba(236, 72, 153, 0.35);
+    --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+    
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-subtle: #64748b;
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #a855f7;
+    color: #ffffff;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2438;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3752;
+}
+
+/* Utility to hide scrollbars while allowing scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@keyframes waveLineFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-wave-line {
+  stroke-dasharray: 8 10;
+  animation: waveLineFlow 3s linear infinite;
+}
+
+/* Continuous Infinite Carousel */
+@keyframes infiniteCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-carousel {
+  display: flex;
+  width: max-content;
+  animation: infiniteCarousel 28s linear infinite;
+}
+
+.animate-infinite-carousel:hover {
+  animation-play-state: paused;
+}
